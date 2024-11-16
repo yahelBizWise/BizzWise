@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>כפתור למספר רנדומלי</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>לחץ על הכפתור לקבלת מספר רנדומלי</h1>
+    <button onclick="displayRandomNumber()">לחץ כאן</button>
+    <p id="randomNumber"></p>
+
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <canvas id="myChart" width="400" height="400"></canvas>
+    <script>
+        // בחר את האלמנט של ה-canvas
+        var ctx = document.getElementById('myChart').getContext('2d');
+    
+        // צור את הגרף
+        var myChart = new Chart(ctx, {
+            type: 'line', // אפשר לשנות ל'bar' או 'pie' וכו' עבור סוגי גרפים אחרים
+            data: {
+                labels: ['ינואר', 'פברואר', 'מרץ', 'אפריל', 'מאי', 'יוני', 'יולי'],
+                datasets: [{
+                    label: 'דוגמה לנתונים',
+                    data: [10, 20, 15, 25, 30, 20, 40],
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

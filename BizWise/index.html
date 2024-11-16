@@ -3,111 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plans & Pricing</title>
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico.">
-    <link rel="stylesheet" href="BizWise-CSS.css">
-    <link rel="stylesheet" href="https://github.com/yahelBizWise/BizWise.git">
-    <link rel="icon" type="image/x-icon" href="BizWise copy.ico">
+    <title>BizWise</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
- <!-- controls -->
- <header>
-    <div class="logo">
-        <img src="BizWise .jpg" alt="BizWise Logo" class="img"  >
-    </div>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="BizWise.html">Plans & Pricing</a></li>
-            <li><a href="#">economy</a></li>
-            <li><a href="#">Crypto</a></li>
-            <li><a href="#">Forex</a></li>
-            <li><a href="#">stock</a></li>
-            <li><a href="#">news</a></li>
-        </ul>
-    </nav>
-    <div class="search-container">
-        <form action="/search" method="GET">
-            <input type="search" name="query" placeholder="Search...">
-          </form>          
-    </div>
-    <div class="user-options">
-        <i class="fas fa-envelope"></i>
-        <i class="fas fa-bell"></i>
-        <i class="fas fa-user-circle"></i>
-        <select>
-            <option>EN</option >
-            <option>HE</option>
-        </select>
-    </div>
-</header>
+    <!-- Header -->
+    <header>
+        <div style="height: 5px;" class="logo">
+            <img src="BizWise.jpg" alt="BizWise Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/BizWise.html">Plans & Pricing</a></li>
+                <li><a href="#">economy</a></li>
+                <li><a href="#">Crypto</a></li>
+                <li><a href="#">Forex</a></li>
+                <li><a href="#">stock</a></li>
+                <li><a href="#">news</a></li>
+            </ul>
+        </nav>
+        <div class="search-container">
+            <input type="text" placeholder="Search...">
+        </div>
+        <div class="user-options">
+            <i class="fas fa-envelope"></i>
+            <i class="fas fa-bell"></i>
+            <i class="fas fa-user-circle"></i>
+            <select>
+                <option>EN</option>
+                <option>HE</option>
+            </select>
+        </div>
+    </header>
 
-<!-- plens -->
-        <main>
-            <SEction>
-                <div class="plan1">
-                    <div class="analist button" >
-                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top"> </form><!--הקישור לא נכון צריך לתת קישור חדש-->
-                            <input type="hidden" name="cmd" value="_xclick-subscriptions">
-                            <input type="hidden" name="business" value="YOUR_PAYPAL_EMAIL">
-                            <input type="hidden" name="item_name" value="Subscription Service">
-                            <input type="hidden" name="currency_code" value="USD">
-                            <input type="hidden" name="a3" value="25"> <!-- סכום המנוי -->
-                            <input type="hidden" name="p3" value="1"> <!-- כמות הזמן בין כל תשלום -->
-                            <input type="hidden" name="t3" value="12"> <!-- סוג התקופה (D = יום, W = שבוע, M = חודש, Y = שנה) -->
-                            <input type="hidden" name="src" value="1"> <!-- חידוש אוטומטי -->
-                            <input type="hidden" name="sra" value="1"> <!-- אפשרות לחידוש אוטומטי -->
-                            <button type="submit">Subscribe</button>
-                        </form>                    
-                <div class="header1">
-                    <h1>analist</h1>
-                    <h2>25</h2>
-                    <p>לחזור אחר כך</p>
-                </div>
-                </div>
-            </SEction>
-            <SEction>
-                <div class="plan2">
-                    <div class="pro Button" >
-                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top"> </form><!--הקישור לא נכון צריך לתת קישור חדש-->
-                            <input type="hidden" name="cmd" value="_xclick-subscriptions">
-                            <input type="hidden" name="business" value="YOUR_PAYPAL_EMAIL">
-                            <input type="hidden" name="item_name" value="Subscription Service">
-                            <input type="hidden" name="currency_code" value="USD">
-                            <input type="hidden" name="a3" value="35"> <!-- סכום המנוי -->
-                            <input type="hidden" name="p3" value="1"> <!-- כמות הזמן בין כל תשלום -->
-                            <input type="hidden" name="t3" value="12"> <!-- סוג התקופה (D = יום, W = שבוע, M = חודש, Y = שנה) -->
-                            <input type="hidden" name="src" value="1"> <!-- חידוש אוטומטי -->
-                            <input type="hidden" name="sra" value="1"> <!-- אפשרות לחידוש אוטומטי -->
-                            <button type="submit">Subscribe</button>
-                        </form>                    
-                <div class="header2">
-                    <h1>PRO</h1>
-                    <h2>35</h2>
-                    <p>לחזור אחר כך</p>
-                </div>
-                </div>
-            </SEction>
-            <div class="plan3">
-                <div class="proplus Button" >
-                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top"> </form><!--הקישור לא נכון צריך לתת קישור חדש-->
-                        <input type="hidden" name="cmd" value="_xclick-subscriptions">
-                        <input type="hidden" name="business" value="YOUR_PAYPAL_EMAIL">
-                        <input type="hidden" name="item_name" value="Subscription Service">
-                        <input type="hidden" name="currency_code" value="USD">
-                        <input type="hidden" name="a3" value="35"> <!-- סכום המנוי -->
-                        <input type="hidden" name="p3" value="1"> <!-- כמות הזמן בין כל תשלום -->
-                        <input type="hidden" name="t3" value="12"> <!-- סוג התקופה (D = יום, W = שבוע, M = חודש, Y = שנה) -->
-                        <input type="hidden" name="src" value="1"> <!-- חידוש אוטומטי -->
-                        <input type="hidden" name="sra" value="1"> <!-- אפשרות לחידוש אוטומטי -->
-                        <button type="submit">Subscribe</button>
-                    </form>                    
-            <div class="header3">
-                <h1>PRO plus</h1>
-                <h2>40</h2>
-                <p>לחזור אחר כך</p>
-                <footer>
-        </SEction>
-         </main>
-    <body>
+    <!-- Main Content -->
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Welcome to BizWise <br> EASY AND SIMPLE</h1>
+            </div>
+            <div class="signup-form">
+                <h2>הצטרף אלינו</h2>
+                <!-- Form sends data to submit.php using POST -->
+                <form action="submit.php" method="POST">
+                    <label for="name">name</label>
+                    <input type="text" id="name" name="name" required>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                    <button type="submit">הירשם</button>
+                </form>
+            </div>
+        </section>
+    </main> 
+    
+    <!-- Footer -->
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/yahel_beren/profilecard/?igsh=MTN1YTNrYTk4NmxoMQ=="
+            ><i class="fab fa-instagram"> <button>instagram</button></i></a>
+            <a href="#"><i class="fab fa-linkedin">
+                <button>linkedin</button></i></a>
+            <a href="https://www.youtube.com/">
+                <button>youtube</button><i class="fab fa-youtube"></i></a>
+        </div>
+        <p>&copy; 2024 by BizWise</p>
+    </footer>
+
+    <!-- Chat Button -->
+    <div class="chat-button">
+            <a href=""
+            <button>Let's Chat!</button>
+    </div>
+    <canvas id="stockChart" width="600" height="400"></canvas>
+
+    <script>
+        async function fetchData() {
+            const response = await fetch('stock_data.json'); // קריאת קובץ ה-JSON
+            const data = await response.json();
+
+            // יצירת מערך של תאריכים ומחירים מונחים
+            const labels = data.map(item => new Date(item.Datetime).toLocaleTimeString());
+            const prices = data.map(item => item.Close);
+
+            // יצירת גרף
+            const ctx = document.getElementById('stockChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'מחיר מניה של SPY',
+                        data: prices,
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        fill: true,
+                    }]
+                },
+                options: {
+                    scales: {
+                        x: { title: { display: true, text: 'שעה' }},
+                        y: { title: { display: true, text: 'מחיר' }}
+                    }
+                }
+            });
+        }
+
+        fetchData();
+    </script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
 </html>
