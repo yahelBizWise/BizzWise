@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>יומן כלכלי | bizwise</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        header {
+            background-color: #2a394f;
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+        .nav {
+            display: flex;
+            list-style: none;
+        }
+        .nav li {
+            margin-right: 15px;
+        }
+        .nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .nav a:hover {
+            text-decoration: underline;
+        }
+        .main {
+            padding: 20px 0;
+        }
+        .page-title {
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #2a394f;
+        }
+        .calendar {
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .calendar-header {
+            background-color: #f7f7f7;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .date-navigation {
+            display: flex;
+            align-items: center;
+        }
+        .date-btn {
+            background-color: #2a394f;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        .calendar-filters {
+            display: flex;
+            align-items: center;
+        }
+        .filter-btn {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            padding: 5px 10px;
+            border-radius: 3px;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+        .filter-btn.active {
+            background-color: #2a394f;
+            color: white;
+            border-color: #2a394f;
+        }
+        .calendar-body {
+            padding: 15px;
+        }
+        .event-list {
+            list-style: none;
+        }
+        .event {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+        .event:last-child {
+            border-bottom: none;
+        }
+        .event-time {
+            width: 80px;
+            color: #888;
+        }
+        .event-country {
+            width: 30px;
+            margin-right: 15px;
+        }
+        .flag {
+            width: 20px;
+            height: 15px;
+        }
+        .event-details {
+            flex-grow: 1;
+            margin-right: 15px;
+        }
+        .event-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .event-info {
+            display: flex;
+            font-size: 12px;
+            color: #888;
+        }
+        .event-importance {
+            display: flex;
+            margin-right: 15px;
+        }
+        .bull {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #ff3a33;
+            margin-right: 2px;
+        }
+        .event-forecast {
+            width: 100px;
+            text-align: center;
+        }
+        .event-previous {
+            width: 100px;
+            text-align: center;
+        }
+        .event-actual {
+            width: 100px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .better {
+            color: #27ae60;
+        }
+        .worse {
+            color: #e74c3c;
+        }
+        .disclaimer {
+            font-size: 12px;
+            color: #888;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">bizwise יומן כלכלי</div>
+                <ul class="nav">
+                    <li><a href="#">ניתוח מניות</a></li>
+                    <li><a href="#">דירוגי אנליסטים</a></li>
+                    <li><a href="#">מסננים מתקדמים</a></li>
+                    <li><a href="#">השוואת חברות</a></li>
+                    <li><a href="#">דוחות פיננסיים</a></li>
+                    <li><a href="#">דיבידנדים</a></li>
+                    <li><a href="Economic diary.html">יומן כלכלי</a></li>
+                    <li><a href="home page.html">חזרה לדף הבית</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <h1 class="page-title">יומן כלכלי</h1>
+
+            <div class="calendar">
+                <div class="calendar-header">
+                    <div class="date-navigation">
+                        <button class="date-btn">יום קודם</button>
+                        <h2>9 אפריל, 2025</h2>
+                        <button class="date-btn">יום הבא</button>
+                    </div>
+                    <div class="calendar-filters">
+                        <button class="filter-btn active">הכל</button>
+                        <button class="filter-btn">ארה"ב</button>
+                        <button class="filter-btn">אירופה</button>
+                        <button class="filter-btn">ישראל</button>
+                        <button class="filter-btn">חשיבות גבוהה</button>
+                    </div>
+                </div>
+                <div class="calendar-body">
+                    <ul class="event-list">
+                        <li class="event">
+                            <div class="event-time">08:00</div>
+                            <div class="event-country">
+                                <img src="/api/placeholder/20/15" alt="דגל ישראל" class="flag" />
+                            </div>
+                            <div class="event-details">
+                                <div class="event-title">מדד המחירים לצרכן (חודשי)</div>
+                                <div class="event-info">
+                                    <div class="event-importance">
+                                        <div class="bull"></div>
+                                        <div class="bull"></div>
+                                        <div class="bull"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="event-forecast">0.2%</div>
+                            <div class="event-previous">0.1%</div>
+                            <div class="event-actual better">0.3%</div>
+                        </li>
+                        <li class="event">
+                            <div class="event-time">10:30</div>
+                            <div class="event-country">
+                                <img src="/api/placeholder/20/15" alt="דגל בריטניה" class="flag" />
+                            </div>
+                            <div class="event-details">
+                                <div class="event-title">תוצר מקומי גולמי (רבעוני)</div>
+                                <div class="event-info">
+                                    <div class="event-importance">
+                                        <div class="bull"></div>
+                                        <div class="bull"></div>
+                                        <div class="bull"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="event-forecast">0.5%</div>
+                            <div class="event-previous">0.6%</div>
+                            <div class="event-actual worse">0.4%</div>
+                        </li>
+                        <li class="event">
+                            <div class="event-time">14:30</div>
+                            <div class="event-country">
+                                <img src="/api/placeholder/20/15" alt="דגל ארה״ב" class="flag" />
+                            </div>
+                            <div class="event-details">
+                                <div class="event-title">תביעות אבטלה ראשוניות</div>
+                                <div class="event-info">
+                                    <div class="event-importance">
+                                        <div class="bull"></div>
+                                        <div class="bull"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="event-forecast">220K</div>
+                            <div class="event-previous">225K</div>
+                            <div class="event-actual better">218K</div>
+                        </li>
+                        <li class="event">
+                            <div class="event-time">16:00</div>
+                            <div class="event-country">
+                                <img src="/api/placeholder/20/15" alt="דגל ארה״ב" class="flag" />
+                            </div>
+                            <div class="event-details">
+                                <div class="event-title">נאום יו״ר הפדרל ריזרב</div>
+                                <div class="event-info">
+                                    <div class="event-importance">
+                                        <div class="bull"></div>
+                                        <div class="bull"></div>
+                                        <div class="bull"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="event-forecast"></div>
+                            <div class="event-previous"></div>
+                            <div class="event-actual"></div>
+                        </li>
+                        <li class="event">
+                            <div class="event-time">17:30</div>
+                            <div class="event-country">
+                                <img src="/api/placeholder/20/15" alt="דגל ארה״ב" class="flag" />
+                            </div>
+                            <div class="event-details">
+                                <div class="event-title">מלאי נפט גולמי</div>
+                                <div class="event-info">
+                                    <div class="event-importance">
+                                        <div class="bull"></div>
+                                        <div class="bull"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="event-forecast">-2.1M</div>
+                            <div class="event-previous">1.2M</div>
+                            <div class="event-actual worse">-1.5M</div>
+                        </li>
+                        <li class="event">
+                            <div class="event-time">20:00</div>
+                            <div class="event-country">
+                                <img src="/api/placeholder/20/15" alt="דגל אירופה" class="flag" />
+                            </div>
+                            <div class="event-details">
+                                <div class="event-title">פרוטוקול ישיבת הבנק המרכזי האירופי</div>
+                                <div class="event-info">
+                                    <div class="event-importance">
+                                        <div class="bull"></div>
+                                        <div class="bull"></div>
+                                        <div class="bull"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="event-forecast"></div>
+                            <div class="event-previous"></div>
+                            <div class="event-actual"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <p class="disclaimer">
+                הערה: כל המידע המוצג ביומן הכלכלי מיועד למטרות מידע בלבד ואינו מהווה המלצה או עצה להשקעה. אין להסתמך על המידע המוצג לצורך קבלת החלטות השקעה. המידע עשוי להשתנות ללא הודעה מוקדמת.
+            </p>
+        </div>
+    </main>
+</body>
+</html>

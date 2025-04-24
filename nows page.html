@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>חדשות פיננסיות - bizwise ישראל</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        header {
+            background-color: #1a1f2e;
+            color: white;
+            padding: 15px 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .header-top {
+            display: flex;
+            gap: 250px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .nav {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            text-align: center;
+        }
+
+        .nav li {
+            margin-left: 20px;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+        }
+
+        .nav a:hover {
+            text-decoration: underline;
+        }
+
+        .main {
+            padding: 20px 0;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+        }
+
+        .main-news {
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+
+        .news-list {
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+
+        .news-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .news-title {
+            color: #1a1f2e;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .news-meta {
+            color: #666;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .news-excerpt {
+            color: #444;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .market-data {
+            background-color: #2a394f;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .market-data h3 {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .market-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .market-table th, .market-table td {
+            padding: 10px;
+            text-align: right;
+            border-bottom: 1px solid #37475a;
+        }
+
+        .market-table th {
+            background-color: #1a1f2e;
+            color: white;
+            font-weight: bold;
+        }
+
+        .market-table tr:hover {
+            background-color: #2a394f;
+        }
+
+        .stock-ticker {
+            background-color: #1a1f2e;
+            color: white;
+            padding: 10px;
+            overflow: hidden;
+        }
+
+        .ticker-content {
+            display: inline-block;
+            white-space: nowrap;
+            animation: ticker 20s linear infinite;
+        }
+
+        @keyframes ticker {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .footer {
+            background-color: #1a1f2e;
+            color: white;
+            padding: 30px 0;
+            margin-top: 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            color: #ccc;
+            font-size: 12px;
+        }
+        .spy-logo{
+            width: 30px;
+        }
+        .pltr-logo{
+            width: 30px;
+        }
+        .dolar-logo{
+            width: 30px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">bizwise </div>
+                <ul class="nav">
+                    <a href="#">מניות</a>
+                    <a href="forex page.html">שוק המט"ח</a>
+                    <a href="Economic diary.html">יומן כלכלי</a>
+                    <a href="GDP page.html">כלכלות</a>
+                    <a href="index page.html">מדדים</a>
+                    <a href="tolls psge.html">כלים</a>
+                    <a href="home page.html">חזרה לעמוד הבית</a>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="news-grid">
+                <div class="main-news">
+                    <h1 class="news-title">המשבר הכלכלי: מה צפוי לשוק המניות ב-2025?</h1>
+                    <div class="news-meta">פורסם לפני 2 שעות | מדור השקעות</div>
+                    <div class="news-excerpt">
+                        המתחים הגאופוליטיים והאינפלציה הגבוהה ממשיכים להשפיע על השווקים הפיננסיים. מהם הסיכונים וההזדמנויות העיקריות למשקיעים בשנה הקרובה?
+                    </div>
+                </div>
+
+                <div class="news-list">
+                    <h2 class="news-title">חדשות עסקיות</h2>
+                    <div class="news-item">
+                        <h3>בנק לאומי מדווח על רווח שיא</h3>
+                        <div class="news-meta">פורסם לפני שעה | מדור בנקאות</div>
+                        <div class="news-excerpt">הבנק הגדול בישראל מדווח על רווח נקי של 4.2 מיליארד שקל ברבעון הרביעי</div>
+                    </div>
+                    <div class="news-item">
+                        <h3>מסחר ענף בנאסד"ק</h3>
+                        <div class="news-meta">פורסם לפני 2 שעות | מדור טכנולוגיה</div>
+                        <div class="news-excerpt">המסחר במניות טכנולוגיה עולה בעוצמה בעקבות פרסום תוצאות רבעון</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="market-data">
+                <h3>מדדי שוק עיקריים</h3>
+                <table class="market-table">
+                    <tr>
+                        <th>טיקר</th>
+                        <th>מחיר</th>
+                        <th>שינוי</th>
+                        <th>שינוי %</th>
+                        <th>לוגו</th>
+                    </tr>
+                    <tr>
+                        <td>s&p 500 </td>
+                        <td>1,850</td>
+                        <td>+15</td>
+                        <td>+0.82%</td>
+                        <td><img src="spy.png" alt="" class="spy-logo"></td>
+                    </tr>
+                    <tr>
+                        <td>PLTR </td>
+                        <td>95.6 </td>
+                        <td>-1.65</td>
+                        <td>-1.86%</td>
+                        <td><img src="pltr.png" alt="" class="pltr-logo"></td>
+                    </tr>
+                    <tr>
+                        <td>דולר</td>
+                        <td>3.55</td>
+                        <td>-0.02</td>
+                        <td>-0.56%</td>
+                        <td class="dolar-logo"><img src="dolar.png" alt="" class="dolar-logo"></td>
+                    </tr>
+
+                </table>
+            </div>
+
+            <div class="stock-ticker">
+                <div class="ticker-content">
+                    LUMI +1.2% | DSCT +0.8% | MZTF -0.5% | TEVA +2.1% | ELAL -1.1% | FIBI +0.9%
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>אודות</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">מי אנחנו</a></li>
+                        <li><a href="#">תנאי שימוש</a></li>
+                        <li><a href="#">מדיניות פרטיות</a></li>
+                        <li><a href="#">צור קשר</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>כלים פיננסיים</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">מחשבון ריבית דריבית</a></li>
+                        <li><a href="#">מסנן מניות</a></li>
+                        <li><a href="#">יומן כלכלי</a></li>
+                        <li><a href="#">מפות חום</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>מידע נוסף</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">מדריכים</a></li>
+                        <li><a href="#">מאגר מידע</a></li>
+                        <li><a href="#">לוח זמנים כלכלי</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                © 2025 bizwise  | כל הזכויות שמורות
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

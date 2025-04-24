@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מחשבון פורקס - סגנון Investing</title>
+    <style>
+        :root {
+            --primary-color: #1e88e5;
+            --primary-dark: #0d47a1;
+            --secondary-color: #26a69a;
+            --text-color: #333;
+            --light-gray: #f5f5f5;
+            --mid-gray: #e0e0e0;
+            --border-color: #ddd;
+            --chart-green: #26a69a;
+            --chart-red: #ef5350;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        .header-buttons a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 14px;
+        }
+
+        .login-btn {
+            background-color: var(--primary-color);
+            color: white !important;
+            padding: 8px 15px;
+            border-radius: 4px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            padding: 15px 0;
+        }
+
+        nav li {
+            margin-left: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            font-size: 15px;
+            position: relative;
+        }
+
+        nav a:hover:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        .main-content {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .sidebar {
+            width: 300px;
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-left: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .content {
+            flex: 1;
+        }
+
+        .section {
+            background-color: white;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-title {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+
+        .currency-converter {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .converter-row {
+            display: flex;
+            margin-bottom: 15px;
+        }
+
+        .converter-column {
+            flex: 1;
+            margin-left: 10px;
+        }
+
+        .converter-label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .converter-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .converter-select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background-color: white;
+            font-size: 16px;
+        }
+
+        .swap-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--light-gray);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 1px solid var(--border-color);
+            margin: 25px auto;
+        }
+
+        .convert-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .convert-button:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .result-box {
+            background-color: var(--light-gray);
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .result-amount {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-dark);
+        }
+
+        .result-text {
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .popular-pairs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .pair-card {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            background-color: var(--light-gray);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .pair-card:hover {
+            background-color: var(--mid-gray);
+        }
+
+        .pair-name {
+            font-weight: 600;
+        }
+
+        .pair-rate {
+            font-weight: 600;
+        }
+
+        .up {
+            color: var(--chart-green);
+        }
+
+        .down {
+            color: var(--chart-red);
+        }
+
+        .market-news {
+            margin-top: 20px;
+        }
+
+        .news-item {
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+        }
+
+        .news-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .news-date {
+            font-size: 12px;
+            color: #777;
+        }
+
+        .currency-list {
+            margin-top: 20px;
+        }
+
+        .currency-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .currency-table th, .currency-table td {
+            padding: 12px 15px;
+            text-align: right;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .currency-table th {
+            background-color: var(--light-gray);
+            font-weight: 600;
+        }
+
+        .currency-table tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        .chart-container {
+            width: 100%;
+            height: 400px;
+            background-color: white;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .chart-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .chart-controls {
+            display: flex;
+        }
+
+        .chart-button {
+            background-color: var(--light-gray);
+            border: 1px solid var(--border-color);
+            padding: 5px 10px;
+            margin-right: 5px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .chart-button.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .chart {
+            height: calc(100% - 60px);
+            width: 100%;
+            padding: 10px;
+        }
+
+        .chart svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .chart path.line {
+            fill: none;
+            stroke: var(--primary-color);
+            stroke-width: 2;
+        }
+
+        .chart .area {
+            fill: rgba(30, 136, 229, 0.1);
+        }
+
+        .chart .axis path,
+        .chart .axis line {
+            stroke: #ccc;
+        }
+
+        .chart .axis text {
+            fill: #666;
+            font-size: 11px;
+        }
+
+        .chart .grid line {
+            stroke: #eee;
+        }
+
+        .footer {
+            background-color: white;
+            padding: 30px 0;
+            margin-top: 40px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .footer-column {
+            flex: 1;
+            margin-left: 20px;
+        }
+
+        .footer-title {
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #777;
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Responsive styles */
+        @media (max-width: 992px) {
+            .main-content {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                margin-left: 0;
+                margin-bottom: 20px;
+            }
+            .popular-pairs {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            .popular-pairs {
+                grid-template-columns: 1fr 1fr;
+            }
+            .footer-content {
+                flex-direction: column;
+            }
+            .footer-column {
+                margin-bottom: 20px;
+                margin-left: 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .converter-row {
+                flex-direction: column;
+            }
+            .converter-column {
+                margin-left: 0;
+                margin-bottom: 15px;
+            }
+            .popular-pairs {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">Biz<span>Wise</span></div>
+                <div class="header-buttons">
+                    <a href="#">עזרה</a>
+                    <a href="#">הרשמה</a>
+                    <a href="#" class="login-btn">התחברות</a>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="home page.html">בית</a></li>
+                    <li><a href="#">מניות</a></li>
+                    <li><a href="index page.html">מדדים</a></li>
+                    <li><a href="GDP page.html">כלכלה</a></li>
+                    <li><a href="nows page.html">חדשות</a></li>
+                    <li><a href="Economic diary.html">יומן כלכלי</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="main-content">
+            <div class="sidebar">
+                <div class="section">
+                    <h3 class="section-title">צמדי מטבעות פופולריים</h3>
+                    <div class="popular-pairs">
+                        <div class="pair-card">
+                            <div class="pair-name">EUR/USD</div>
+                            <div class="pair-rate up">1.0845 <span>+0.0012</span></div>
+                        </div>
+                        <div class="pair-card">
+                            <div class="pair-name">GBP/USD</div>
+                            <div class="pair-rate down">1.2532 <span>-0.0021</span></div>
+                        </div>
+                        <div class="pair-card">
+                            <div class="pair-name">USD/JPY</div>
+                            <div class="pair-rate up">153.42 <span>+0.35</span></div>
+                        </div>
+                        <div class="pair-card">
+                            <div class="pair-name">AUD/USD</div>
+                            <div class="pair-rate down">0.6651 <span>-0.0015</span></div>
+                        </div>
+                        <div class="pair-card">
+                            <div class="pair-name">USD/CAD</div>
+                            <div class="pair-rate up">1.3645 <span>+0.0028</span></div>
+                        </div>
+                        <div class="pair-card">
+                            <div class="pair-name">USD/ILS</div>
+                            <div class="pair-rate down">3.7125 <span>-0.0032</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section market-news">
+                    <h3 class="section-title">חדשות שוק</h3>
+                    <div class="news-item">
+                        <div class="news-title">הפד צפוי להוריד את הריבית לקראת סוף השנה</div>
+                        <div class="news-date">12 באפריל, 2025 - 10:45</div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-title">הליש"ט מתחזק בעקבות נתוני צמיחה חיוביים בבריטניה</div>
+                        <div class="news-date">11 באפריל, 2025 - 16:30</div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-title">משבר האנרגיה באירופה משפיע על האירו</div>
+                        <div class="news-date">10 באפריל, 2025 - 09:15</div>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <div class="chart-title">EUR/USD</div>
+                        <div class="chart-controls">
+                            <button class="chart-button">1D</button>
+                            <button class="chart-button active">1W</button>
+                            <button class="chart-button">1M</button>
+                            <button class="chart-button">3M</button>
+                            <button class="chart-button">6M</button>
+                            <button class="chart-button">1Y</button>
+                        </div>
+                    </div>
+                    <div class="chart">
+                        <svg viewBox="0 0 800 300">
+                            <path d="M0,150 C100,120 200,180 300,140 C400,100 500,160 600,130 C700,100 800,120 800,150" class="line"></path>
+                            <path d="M0,150 C100,120 200,180 300,140 C400,100 500,160 600,130 C700,100 800,120 800,150 L800,300 L0,300 Z" class="area"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="section">
+                    <h3 class="section-title">מחשבון המרת מטבעות</h3>
+                    <div class="currency-converter">
+                        <div class="converter-row">
+                            <div class="converter-column">
+                                <label class="converter-label">סכום</label>
+                                <input type="number" class="converter-input" id="amount" value="1" min="0">
+                            </div>
+                            <div class="converter-column">
+                                <label class="converter-label">מטבע מקור</label>
+                                <select class="converter-select" id="from-currency">
+                                    <option value="USD">דולר אמריקאי (USD)</option>
+                                    <option value="EUR" selected>אירו (EUR)</option>
+                                    <option value="GBP">ליש"ט (GBP)</option>
+                                    <option value="JPY">יין יפני (JPY)</option>
+                                    <option value="AUD">דולר אוסטרלי (AUD)</option>
+                                    <option value="CAD">דולר קנדי (CAD)</option>
+                                    <option value="CHF">פרנק שוויצרי (CHF)</option>
+                                    <option value="CNY">יואן סיני (CNY)</option>
+                                    <option value="ILS">שקל ישראלי (ILS)</option>
+                                    <option value="INR">רופי הודי (INR)</option>
+                                    <option value="MXN">פזו מקסיקני (MXN)</option>
+                                    <option value="NOK">כתר נורבגי (NOK)</option>
+                                    <option value="NZD">דולר ניו זילנדי (NZD)</option>
+                                    <option value="RUB">רובל רוסי (RUB)</option>
+                                    <option value="SEK">כתר שוודי (SEK)</option>
+                                    <option value="ZAR">ראנד דרום אפריקאי (ZAR)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="swap-button" id="swap-currencies">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <polyline points="19 12 12 19 5 12"></polyline>
+                            </svg>
+                        </div>
+                        <div class="converter-row">
+                            <div class="converter-column">
+                                <label class="converter-label">סכום ההמרה</label>
+                                <input type="number" class="converter-input" id="result" value="1.0845" readonly>
+                            </div>
+                            <div class="converter-column">
+                                <label class="converter-label">מטבע יעד</label>
+                                <select class="converter-select" id="to-currency">
+                                    <option value="USD" selected>דולר אמריקאי (USD)</option>
+                                    <option value="EUR">אירו (EUR)</option>
+                                    <option value="GBP">ליש"ט (GBP)</option>
+                                    <option value="JPY">יין יפני (JPY)</option>
+                                    <option value="AUD">דולר אוסטרלי (AUD)</option>
+                                    <option value="CAD">דולר קנדי (CAD)</option>
+                                    <option value="CHF">פרנק שוויצרי (CHF)</option>
+                                    <option value="CNY">יואן סיני (CNY)</option>
+                                    <option value="ILS">שקל ישראלי (ILS)</option>
+                                    <option value="INR">רופי הודי (INR)</option>
+                                    <option value="MXN">פזו מקסיקני (MXN)</option>
+                                    <option value="NOK">כתר נורבגי (NOK)</option>
+                                    <option value="NZD">דולר ניו זילנדי (NZD)</option>
+                                    <option value="RUB">רובל רוסי (RUB)</option>
+                                    <option value="SEK">כתר שוודי (SEK)</option>
+                                    <option value="ZAR">ראנד דרום אפריקאי (ZAR)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button class="convert-button" id="convert-button">המר</button>
+                        <div class="result-box">
+                            <div class="result-amount">1 EUR = 1.0845 USD</div>
+                            <div class="result-text">עודכן לאחרונה: 12 באפריל, 2025 - 12:30</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section currency-list">
+                    <h3 class="section-title">שערי מטבעות עיקריים מול הדולר האמריקאי</h3>
+                    <table class="currency-table">
+                        <thead>
+                            <tr>
+                                <th>מטבע</th>
+                                <th>קוד</th>
+                                <th>שער</th>
+                                <th>שינוי</th>
+                                <th>שינוי %</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>אירו</td>
+                                <td>EUR</td>
+                                <td>1.0845</td>
+                                <td class="up">+0.0012</td>
+                                <td class="up">+0.11%</td>
+                            </tr>
+                            <tr>
+                                <td>ליש"ט</td>
+                                <td>GBP</td>
+                                <td>1.2532</td>
+                                <td class="down">-0.0021</td>
+                                <td class="down">-0.17%</td>
+                            </tr>
+                            <tr>
+                                <td>יין יפני</td>
+                                <td>JPY</td>
+                                <td>153.42</td>
+                                <td class="up">+0.35</td>
+                                <td class="up">+0.23%</td>
+                            </tr>
+                            <tr>
+                                <td>פרנק שוויצרי</td>
+                                <td>CHF</td>
+                                <td>0.9076</td>
+                                <td class="up">+0.0024</td>
+                                <td class="up">+0.26%</td>
+                            </tr>
+                            <tr>
+                                <td>דולר קנדי</td>
+                                <td>CAD</td>
+                                <td>1.3645</td>
+                                <td class="up">+0.0028</td>
+                                <td class="up">+0.21%</td>
+                            </tr>
+                            <tr>
+                                <td>דולר אוסטרלי</td>
+                                <td>AUD</td>
+                                <td>0.6651</td>
+                                <td class="down">-0.0015</td>
+                                <td class="down">-0.22%</td>
+                            </tr>
+                            <tr>
+                                <td>יואן סיני</td>
+                                <td>CNY</td>
+                                <td>7.2318</td>
+                                <td class="up">+0.0036</td>
+                                <td class="up">+0.05%</td>
+                            </tr>
+                            <tr>
+                                <td>שקל ישראלי</td>
+                                <td>ILS</td>
+                                <td>3.7125</td>
+                                <td class="down">-0.0032</td>
+                                <td class="down">-0.09%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4 class="footer-title">שווקים</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">פורקס</a></li>
+                        <li><a href="#">מניות</a></li>
+                        <li><a href="#">מדדים</a></li>
+                        <li><a href="#">סחורות</a></li>
+                        <li><a href="#">מטבעות קריפטו</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">כלים</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">מחשבון פורקס</a></li>
+                        <li><a href="#">מחשבון רווח והפסד</a></li>
+                        <li><a href="#">לוח כלכלי</a></li>
+                        <li><a href="#">סקירה טכנית</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">חינוך</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">מדריך למתחילים</a></li>
+                        <li><a href="#">אסטרטגיות מסחר</a></li>
+                        <li><a href="#">ניתוח טכני</a></li>
+                        <li><a href="#">ניתוח פונדמנטלי</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">אודות</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">אודותינו</a></li>
+                        <li><a href="#">צור קשר</a></li>
+                        <li><a href="#">תנאי שימוש</a></li>
+                        <li><a href="#">מדיניות פרטיות</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="disclaimer">
+                <p>אזהרת סיכון: מסחר במטבע חוץ, חוזים עתידיים ואופציות כרוך בסיכון גבוה להפסד כספי. המידע המוצג באתר זה הוא לצורך מידע כללי בלבד ואינו מהווה המלצה או ייעוץ להשקעה. אנו לא נושאים באחריות לכל הפסד שעלול להיגרם כתוצאה משימוש במידע המופיע באתר.</p>
+                <p>© 2025 פורקסכל הזכויות שמורות.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Exchange rates database (from EUR base)
+        const exchangeRates = {
+            "USD": 1.0845,
+            "EUR": 1.0000,
+            "GBP": 0.8626,
+            "JPY": 166.39,
+            "AUD": 1.5642,
+            "CAD": 1.4578,
+            "CHF": 0.8762,
+            "CNY": 7.2318,
+            "ILS": 3.7125,
+            "INR": 89.4321,
+            "MXN": 20.2345,
+            "NOK": 10.2345,
+            "NZD": 1.7345,
+            "RUB": 94.2345,
+            "SEK": 11.2345,
+            "ZAR": 18.2345
+        };
+
+        // Function to convert between currencies
+        function convertCurrency(amount, fromCurrency, toCurrency) {
+            // Convert to EUR first, then to target currency
+            const eurAmount = amount / exchangeRates[fromCurrency];
+            return eurAmount * exchangeRates[toCurrency];
+        }
+
+        // Event listeners for currency conversion
+        document.getElementById('convert-button').addEventListener('click', function() {
+            const amount = parseFloat(document.getElementById('amount').value);
+            const fromCurrency = document.getElementById('from-currency').value;
+            const toCurrency = document.getElementById('to-currency').value;
+            
+            if (isNaN(amount) || amount < 0) {
+                alert('נא להזין סכום חיובי');
+                return;
+            }
+            
+            const result = convertCurrency(amount, fromCurrency, toCurrency);
+            document.getElementById('result').value = result.toFixed(4);
+            
+            // Update result box text
+            const resultText = `${amount} ${fromCurrency} = ${result.toFixed(4)} ${toCurrency}`;
+            document.querySelector('.result-amount').textContent = resultText;
+            
+            // Update last updated time
+            const now = new Date();
+            const timeString = now.toLocaleDateString('he-IL') + ' - ' + 
+                              now.toLocaleTimeString('he-IL');
+            document.querySelector('.result-text').textContent = 
+                `עודכן לאחרונה: ${timeString}`;
+        });
+
+        // Add event listener for currency swap button
+        document.getElementById('swap-currencies').addEventListener('click', function() {
+            const fromCurrency = document.getElementById('from-currency').value;
+            const toCurrency = document.getElementById('to-currency').value;
+            
+            document.getElementById('from-currency').value = toCurrency;
+            document.getElementById('to-currency').value = fromCurrency;
+            
+            // Trigger conversion after swap
+            document.getElementById('convert-button').click();
+        });
+    </script>
+</body>
+</html>
