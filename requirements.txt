@@ -1,0 +1,6 @@
+yfinance
+python-docx
+pandas
+requests
+openpyxl
+flask
